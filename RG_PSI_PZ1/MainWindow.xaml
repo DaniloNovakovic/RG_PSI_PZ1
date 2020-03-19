@@ -21,18 +21,20 @@
         </Grid.RowDefinitions>
         <ToolBarTray Grid.Row="0">
             <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
-                <Button ToolTip="Add Ellipse">
-                    <materialDesign:PackIcon Kind="ShapeCircleAdd" />
-                </Button>
-                <Button ToolTip="Add Rectangle">
-                    <materialDesign:PackIcon Kind="ShapeRectangleAdd" />
-                </Button>
-                <Button ToolTip="Add Polygon">
-                    <materialDesign:PackIcon Kind="ShapePolygonAdd" />
-                </Button>
-                <Button ToolTip="Add Image">
-                    <materialDesign:PackIcon Kind="ImageAdd" />
-                </Button>
+                <ListBox SelectedIndex="0">
+                    <ListBoxItem ToolTip="Add Ellipse">
+                        <materialDesign:PackIcon Kind="ShapeCircleAdd" />
+                    </ListBoxItem>
+                    <ListBoxItem ToolTip="Add Rectangle">
+                        <materialDesign:PackIcon Kind="ShapeRectangleAdd" />
+                    </ListBoxItem>
+                    <ListBoxItem ToolTip="Add Polygon">
+                        <materialDesign:PackIcon Kind="ShapePolygonAdd" />
+                    </ListBoxItem>
+                    <ListBoxItem ToolTip="Add Image">
+                        <materialDesign:PackIcon Kind="ImageAdd" />
+                    </ListBoxItem>
+                </ListBox>
                 <Separator />
                 <Button ToolTip="Undo">
                     <materialDesign:PackIcon Kind="Undo" />
