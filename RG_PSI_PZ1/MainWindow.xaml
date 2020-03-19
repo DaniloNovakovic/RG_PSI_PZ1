@@ -15,8 +15,39 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
-            <TextBlock>My First Material Design App</TextBlock>
-        </materialDesign:Card>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ToolBarTray Grid.Row="0">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                <Button ToolTip="Add Ellipse">
+                    <materialDesign:PackIcon Kind="ShapeCircleAdd" />
+                </Button>
+                <Button ToolTip="Add Rectangle">
+                    <materialDesign:PackIcon Kind="ShapeRectangleAdd" />
+                </Button>
+                <Button ToolTip="Add Polygon">
+                    <materialDesign:PackIcon Kind="ShapePolygonAdd" />
+                </Button>
+                <Button ToolTip="Add Image">
+                    <materialDesign:PackIcon Kind="ImageAdd" />
+                </Button>
+                <Separator />
+                <Button ToolTip="Undo">
+                    <materialDesign:PackIcon Kind="Undo" />
+                </Button>
+                <Button ToolTip="Redo">
+                    <materialDesign:PackIcon Kind="Redo" />
+                </Button>
+                <Separator />
+                <Button ToolTip="Clear">
+                    <materialDesign:PackIcon Kind="CircleArrows" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Canvas Grid.Row="1">
+            <TextBlock>This is my Canvas</TextBlock>
+        </Canvas>
     </Grid>
 </Window>
