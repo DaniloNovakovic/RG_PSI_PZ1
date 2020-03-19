@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,17 @@ namespace RG_PSI_PZ1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Canvas MyCanvas { get => PaintingCanvas; }
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var clickedPosition = e.GetPosition(MyCanvas);
+            Debug.WriteLine($"Canvas Clicked: ({clickedPosition.X}, {clickedPosition.Y})");
         }
     }
 }
