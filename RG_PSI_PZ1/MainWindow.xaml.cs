@@ -21,17 +21,36 @@ namespace RG_PSI_PZ1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Canvas MyCanvas { get => PaintingCanvas; }
+        private readonly IMouseClickHandlerFactory _mouseClickHandlerFactory;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            _mouseClickHandlerFactory = new MouseClickHandlerFactory();
+            UpdateMouseClickHandler();
         }
 
-        private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        public IMouseClickHandler MouseClickHandler { get; private set; }
+        public Canvas MyCanvas { get => PaintingCanvas; }
+
+        private void OnCanvasMouseClick(object sender, MouseButtonEventArgs e)
         {
             var clickedPosition = e.GetPosition(MyCanvas);
             Debug.WriteLine($"Canvas Clicked: ({clickedPosition.X}, {clickedPosition.Y})");
+            MouseClickHandler?.Handle(clickedPosition);
+        }
+
+        private void OnShapeSelectionChange(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems.Cast<FrameworkElement>().FirstOrDefault();
+            UpdateMouseClickHandler(selectedItem?.Name ?? "");
+        }
+
+        private void UpdateMouseClickHandler(string selectedItem = "")
+        {
+            Debug.WriteLine($"Selected Item: {selectedItem}");
+            MouseClickHandler = _mouseClickHandlerFactory.GetHandler(selectedItem);
         }
     }
 }
