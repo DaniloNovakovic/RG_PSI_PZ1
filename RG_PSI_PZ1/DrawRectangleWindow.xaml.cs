@@ -28,6 +28,8 @@ namespace RG_PSI_PZ1
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Cancel button clicked");
+
+            DialogResult = false;
             Close();
         }
 
@@ -37,6 +39,8 @@ namespace RG_PSI_PZ1
             Debug.WriteLine($"Width: {WidthInput.Text}, Height: {HeightInput.Text}");
             Debug.WriteLine($"Fill Color: {FillColorInput.SelectedColor}");
             Debug.WriteLine($"Border Color: {BorderColorInput.SelectedColor}, Border Thickness: {BorderThicknessInput.Text}");
+
+            DialogResult = true;
             Close();
         }
     }
