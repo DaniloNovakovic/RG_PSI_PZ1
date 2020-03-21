@@ -27,7 +27,7 @@ namespace RG_PSI_PZ1
         {
             InitializeComponent();
 
-            _mouseClickHandlerFactory = new MouseClickHandlerFactory();
+            _mouseClickHandlerFactory = new MouseClickHandlerFactory(MyCanvas);
             UpdateMouseClickHandler();
         }
 

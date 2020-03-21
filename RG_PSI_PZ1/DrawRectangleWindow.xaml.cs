@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,21 @@ namespace RG_PSI_PZ1
         public DrawRectangleWindow()
         {
             InitializeComponent();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Cancel button clicked");
+            Close();
+        }
+
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Submit button clicked");
+            Debug.WriteLine($"Width: {WidthInput.Text}, Height: {HeightInput.Text}");
+            Debug.WriteLine($"Fill Color: {FillColorInput.SelectedColor}");
+            Debug.WriteLine($"Border Color: {BorderColorInput.SelectedColor}, Border Thickness: {BorderThicknessInput.Text}");
+            Close();
         }
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RG_PSI_PZ1"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Draw a Rectangle" Height="300" Width="400">
     <Grid Margin="5">
@@ -19,12 +20,23 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
         <TextBlock Text="Width:" Grid.Row="0" Grid.Column="0" Margin="5" />
+        <TextBox x:Name="WidthInput" Text="200" Grid.Row="0" Grid.Column="1" TextAlignment="Right" Margin="5" />
+
         <TextBlock Text="Height:" Grid.Row="1" Grid.Column="0" Margin="5" />
+        <TextBox x:Name="HeightInput" Text="75" Grid.Row="1" Grid.Column="1" TextAlignment="Right" Margin="5" />
+
         <TextBlock Text="Fill Color:" Grid.Row="2" Grid.Column="0" Margin="5" />
+        <xctk:ColorPicker x:Name="FillColorInput" Grid.Row="2" Grid.Column="1" Margin="5" />
+
         <TextBlock Text="Border Color:" Grid.Row="3" Grid.Column="0" Margin="5" />
+        <xctk:ColorPicker x:Name="BorderColorInput" Grid.Row="3" Grid.Column="1" Margin="5" />
+
         <TextBlock Text="Border Thickness:" Grid.Row="4" Grid.Column="0" Margin="5" />
-        <Button Content="Cancel" Grid.Row="5" Grid.Column="0" Margin="5" />
-        <Button Content="Draw" Grid.Row="5" Grid.Column="1" Margin="5" />
+        <TextBox x:Name="BorderThicknessInput" Text="2" Grid.Row="4" Grid.Column="1" TextAlignment="Right" Margin="5" />
+
+        <Button x:Name="CancelButton" Content="Cancel" Grid.Row="5" Grid.Column="0" Margin="5" Click="CancelButton_Click" />
+        <Button x:Name="SubmitButton" Content="Draw" Grid.Row="5" Grid.Column="1" Margin="5" Click="SubmitButton_Click" />
     </Grid>
 </Window>
