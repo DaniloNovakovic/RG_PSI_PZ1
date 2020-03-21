@@ -20,6 +20,8 @@ namespace RG_PSI_PZ1
     /// </summary>
     public partial class DrawRectangleWindow : Window
     {
+        public Rectangle RectangleInput { get; set; } = new Rectangle();
+
         public DrawRectangleWindow()
         {
             InitializeComponent();
@@ -39,6 +41,17 @@ namespace RG_PSI_PZ1
             Debug.WriteLine($"Width: {WidthInput.Text}, Height: {HeightInput.Text}");
             Debug.WriteLine($"Fill Color: {FillColorInput.SelectedColor}");
             Debug.WriteLine($"Border Color: {BorderColorInput.SelectedColor}, Border Thickness: {BorderThicknessInput.Text}");
+
+            RectangleInput.Width = WidthInput?.Value ?? 200;
+            RectangleInput.Height = HeightInput?.Value ?? 75;
+
+            var fillColor = FillColorInput.SelectedColor ?? Color.FromRgb(0, 0, 255);
+            RectangleInput.Fill = new SolidColorBrush(fillColor);
+
+            var borderColor = BorderColorInput.SelectedColor ?? Color.FromRgb(0, 0, 0);
+            RectangleInput.Stroke = new SolidColorBrush(borderColor);
+
+            RectangleInput.StrokeThickness = BorderThicknessInput?.Value ?? 2;
 
             DialogResult = true;
             Close();

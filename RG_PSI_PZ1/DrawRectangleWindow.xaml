@@ -22,19 +22,19 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Width:" Grid.Row="0" Grid.Column="0" Margin="5" />
-        <TextBox x:Name="WidthInput" Text="200" Grid.Row="0" Grid.Column="1" TextAlignment="Right" Margin="5" />
+        <xctk:IntegerUpDown x:Name="WidthInput" Value="200" Grid.Row="0" Grid.Column="1" TextAlignment="Right" Margin="5" />
 
         <TextBlock Text="Height:" Grid.Row="1" Grid.Column="0" Margin="5" />
-        <TextBox x:Name="HeightInput" Text="75" Grid.Row="1" Grid.Column="1" TextAlignment="Right" Margin="5" />
+        <xctk:IntegerUpDown x:Name="HeightInput" Value="75" Grid.Row="1" Grid.Column="1" TextAlignment="Right" Margin="5" />
 
         <TextBlock Text="Fill Color:" Grid.Row="2" Grid.Column="0" Margin="5" />
-        <xctk:ColorPicker x:Name="FillColorInput" Grid.Row="2" Grid.Column="1" Margin="5" />
+        <xctk:ColorPicker x:Name="FillColorInput" Grid.Row="2" Grid.Column="1" Margin="5" SelectedColor="Blue" />
 
         <TextBlock Text="Border Color:" Grid.Row="3" Grid.Column="0" Margin="5" />
-        <xctk:ColorPicker x:Name="BorderColorInput" Grid.Row="3" Grid.Column="1" Margin="5" />
+        <xctk:ColorPicker x:Name="BorderColorInput" Grid.Row="3" Grid.Column="1" Margin="5" SelectedColor="Orange" />
 
         <TextBlock Text="Border Thickness:" Grid.Row="4" Grid.Column="0" Margin="5" />
-        <TextBox x:Name="BorderThicknessInput" Text="2" Grid.Row="4" Grid.Column="1" TextAlignment="Right" Margin="5" />
+        <xctk:IntegerUpDown x:Name="BorderThicknessInput" Value="2" Grid.Row="4" Grid.Column="1" TextAlignment="Right" Margin="5" />
 
         <Button x:Name="CancelButton" Content="Cancel" Grid.Row="5" Grid.Column="0" Margin="5" Click="CancelButton_Click" />
         <Button x:Name="SubmitButton" Content="Draw" Grid.Row="5" Grid.Column="1" Margin="5" Click="SubmitButton_Click" />

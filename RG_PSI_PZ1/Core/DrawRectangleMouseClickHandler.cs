@@ -32,14 +32,12 @@ namespace RG_PSI_PZ1
 
             if (window.ShowDialog() ?? false)
             {
-                DrawRectangleToCanvas(clickPoint);
+                DrawRectangleToCanvas(clickPoint, window.RectangleInput);
             }
         }
 
-        private void DrawRectangleToCanvas(Point relativePoint)
+        private void DrawRectangleToCanvas(Point relativePoint, Rectangle rectangle)
         {
-            var rectangle = new Rectangle() { Fill = Brushes.Blue, Height = 45, Width = 45, RadiusX = 12, RadiusY = 12 };
-
             Canvas.SetLeft(rectangle, relativePoint.X);
             Canvas.SetTop(rectangle, relativePoint.Y);
 
