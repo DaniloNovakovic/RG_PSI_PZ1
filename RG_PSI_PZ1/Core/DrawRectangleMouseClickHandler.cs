@@ -17,7 +17,16 @@ namespace RG_PSI_PZ1
         {
             Debug.WriteLine("Opening DrawRectangleWindow dialog...");
 
-            var window = new DrawRectangleWindow();
+            var absoluteClickPoint = _canvas.PointToScreen(clickPoint);
+            Debug.WriteLine($"AbsClickPoint: ({absoluteClickPoint.X},{absoluteClickPoint.Y})");
+
+            var window = new DrawRectangleWindow
+            {
+                WindowStartupLocation = WindowStartupLocation.Manual,
+                Left = absoluteClickPoint.X,
+                Top = absoluteClickPoint.Y
+            };
+
             window.ShowDialog();
         }
     }
