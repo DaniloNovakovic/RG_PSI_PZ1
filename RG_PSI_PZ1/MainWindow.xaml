@@ -43,7 +43,7 @@
                     <materialDesign:PackIcon Kind="Redo" />
                 </Button>
                 <Separator />
-                <Button ToolTip="Clear">
+                <Button ToolTip="Clear" Click="OnClear">
                     <materialDesign:PackIcon Kind="CircleArrows" />
                 </Button>
             </ToolBar>

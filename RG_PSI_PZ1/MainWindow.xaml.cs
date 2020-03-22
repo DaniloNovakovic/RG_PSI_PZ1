@@ -53,5 +53,10 @@ namespace RG_PSI_PZ1
             Debug.WriteLine($"Selected Item: {selectedItem}");
             MouseClickHandler = _mouseClickHandlerFactory.GetHandler(selectedItem);
         }
+
+        private void OnClear(object sender, RoutedEventArgs e)
+        {
+            MyCanvas.Children.Clear();
+        }
     }
 }
