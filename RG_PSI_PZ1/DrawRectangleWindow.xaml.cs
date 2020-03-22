@@ -20,7 +20,21 @@ namespace RG_PSI_PZ1
     /// </summary>
     public partial class DrawRectangleWindow : Window
     {
-        public Rectangle RectangleInput { get; set; } = new Rectangle();
+        private Rectangle _rectangle = new Rectangle();
+
+        public Rectangle RectangleInput
+        {
+            get => _rectangle;
+            set
+            {
+                _rectangle = value;
+                WidthInput.Value = (int?)_rectangle.Width;
+                HeightInput.Value = (int?)_rectangle.Height;
+                FillColorInput.SelectedColor = ((SolidColorBrush)_rectangle.Fill).Color;
+                BorderColorInput.SelectedColor = ((SolidColorBrush)_rectangle.Stroke).Color;
+                BorderThicknessInput.Value = (int?)_rectangle.StrokeThickness;
+            }
+        }
 
         public DrawRectangleWindow()
         {

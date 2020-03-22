@@ -33,7 +33,24 @@ namespace RG_PSI_PZ1
             if (window.ShowDialog() ?? false)
             {
                 DrawRectangleToCanvas(clickPoint, window.RectangleInput);
+                AttachEventHandlersToRectangle(window.RectangleInput);
             }
+        }
+
+        private void AttachEventHandlersToRectangle(Rectangle rectangle)
+        {
+            rectangle.MouseLeftButtonUp += (sender, e) =>
+            {
+                var absoluteClickPoint = _canvas.PointToScreen(e.GetPosition(_canvas));
+                var window = new DrawRectangleWindow()
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual,
+                    Left = absoluteClickPoint.X,
+                    Top = absoluteClickPoint.Y,
+                    RectangleInput = rectangle
+                };
+                window.ShowDialog();
+            };
         }
 
         private void DrawRectangleToCanvas(Point relativePoint, Rectangle rectangle)
