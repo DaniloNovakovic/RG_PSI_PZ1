@@ -18,22 +18,11 @@ namespace RG_PSI_PZ1
 
         public void Handle(Point clickPoint)
         {
-            Debug.WriteLine("Opening DrawRectangleWindow dialog...");
-
-            var absoluteClickPoint = _canvas.PointToScreen(clickPoint);
-            Debug.WriteLine($"AbsClickPoint: ({absoluteClickPoint.X},{absoluteClickPoint.Y})");
-
-            var window = new DrawRectangleWindow
+            Rectangle rectangle = ShowRectangleDialog(clickPoint);
+            if (rectangle != null)
             {
-                WindowStartupLocation = WindowStartupLocation.Manual,
-                Left = absoluteClickPoint.X,
-                Top = absoluteClickPoint.Y
-            };
-
-            if (window.ShowDialog() ?? false)
-            {
-                DrawRectangleToCanvas(clickPoint, window.RectangleInput);
-                AttachEventHandlersToRectangle(window.RectangleInput);
+                AttachEventHandlersToRectangle(rectangle);
+                DrawRectangleToCanvas(clickPoint, rectangle);
             }
         }
 
@@ -41,15 +30,7 @@ namespace RG_PSI_PZ1
         {
             rectangle.MouseLeftButtonUp += (sender, e) =>
             {
-                var absoluteClickPoint = _canvas.PointToScreen(e.GetPosition(_canvas));
-                var window = new DrawRectangleWindow()
-                {
-                    WindowStartupLocation = WindowStartupLocation.Manual,
-                    Left = absoluteClickPoint.X,
-                    Top = absoluteClickPoint.Y,
-                    RectangleInput = rectangle
-                };
-                window.ShowDialog();
+                ShowRectangleDialog(e.GetPosition(_canvas), rectangleToEdit: (Rectangle)sender);
             };
         }
 
@@ -59,6 +40,28 @@ namespace RG_PSI_PZ1
             Canvas.SetTop(rectangle, relativePoint.Y);
 
             _canvas.Children.Add(rectangle);
+        }
+
+        private Rectangle ShowRectangleDialog(Point canvasClickPoint, Rectangle rectangleToEdit = null)
+        {
+            Debug.WriteLine("Opening DrawRectangleWindow dialog...");
+
+            var absoluteClickPoint = _canvas.PointToScreen(canvasClickPoint);
+            Debug.WriteLine($"AbsClickPoint: ({absoluteClickPoint.X},{absoluteClickPoint.Y})");
+
+            var window = new DrawRectangleWindow
+            {
+                WindowStartupLocation = WindowStartupLocation.Manual,
+                Left = absoluteClickPoint.X,
+                Top = absoluteClickPoint.Y
+            };
+
+            if (rectangleToEdit != null)
+            {
+                window.RectangleInput = rectangleToEdit;
+            }
+
+            return window.ShowDialog() ?? false ? window.RectangleInput : null;
         }
     }
 }
