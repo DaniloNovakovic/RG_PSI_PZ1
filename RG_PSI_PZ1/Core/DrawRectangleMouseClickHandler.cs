@@ -1,24 +1,24 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace RG_PSI_PZ1
+namespace RG_PSI_PZ1.Core
 {
-    internal class DrawRectangleMouseClickHandler : IMouseClickHandler
+    public class DrawRectangleMouseClickHandler : IMouseClickHandler
     {
         private readonly Canvas _canvas;
+        private readonly ICommandManager _commandManager;
 
-        public DrawRectangleMouseClickHandler(Canvas canvas)
+        public DrawRectangleMouseClickHandler(Canvas canvas, ICommandManager commandManager)
         {
             _canvas = canvas;
+            _commandManager = commandManager;
         }
 
         public void Handle(Point clickPoint)
         {
-            Rectangle rectangle = ShowRectangleDialog(clickPoint);
+            var rectangle = ShowRectangleDialog(clickPoint);
             if (rectangle != null)
             {
                 AttachEventHandlersToRectangle(rectangle);

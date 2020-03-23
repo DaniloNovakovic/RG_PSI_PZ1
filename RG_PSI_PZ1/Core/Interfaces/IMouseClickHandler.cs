@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace RG_PSI_PZ1
+namespace RG_PSI_PZ1.Core
 {
     public interface IMouseClickHandler
     {

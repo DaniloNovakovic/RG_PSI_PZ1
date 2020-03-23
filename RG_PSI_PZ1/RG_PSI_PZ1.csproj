@@ -90,9 +90,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\CommandManager.cs" />
     <Compile Include="Core\DrawRectangleMouseClickHandler.cs" />
-    <Compile Include="Core\IMouseClickHandler.cs" />
-    <Compile Include="Core\IMouseClickHandlerFactory.cs" />
+    <Compile Include="Core\Interfaces\ICommandManager.cs" />
+    <Compile Include="Core\Interfaces\IMouseClickHandler.cs" />
+    <Compile Include="Core\Interfaces\IMouseClickHandlerFactory.cs" />
+    <Compile Include="Core\Interfaces\IUndoableCommand.cs" />
     <Compile Include="DrawRectangleWindow.xaml.cs">
       <DependentUpon>DrawRectangleWindow.xaml</DependentUpon>
     </Compile>

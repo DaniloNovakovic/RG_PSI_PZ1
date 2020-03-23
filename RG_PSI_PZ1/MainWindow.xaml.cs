@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using RG_PSI_PZ1.Core;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RG_PSI_PZ1
 {
@@ -22,12 +13,14 @@ namespace RG_PSI_PZ1
     public partial class MainWindow : Window
     {
         private readonly IMouseClickHandlerFactory _mouseClickHandlerFactory;
+        private readonly ICommandManager _commandManager;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _mouseClickHandlerFactory = new MouseClickHandlerFactory(MyCanvas);
+            _commandManager = new Core.CommandManager();
+            _mouseClickHandlerFactory = new MouseClickHandlerFactory(MyCanvas, _commandManager);
             UpdateMouseClickHandler();
         }
 
