@@ -12,8 +12,8 @@ namespace RG_PSI_PZ1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IMouseClickHandlerFactory _mouseClickHandlerFactory;
         private readonly ICommandManager _commandManager;
+        private readonly IMouseClickHandlerFactory _mouseClickHandlerFactory;
 
         public MainWindow()
         {
@@ -26,13 +26,8 @@ namespace RG_PSI_PZ1
             UpdateMouseClickHandler();
         }
 
-        private void OnUndoableCommandExecuted(object sender, System.EventArgs e)
-        {
-            UndoButton.IsEnabled = _commandManager.CanUndo();
-            RedoButton.IsEnabled = _commandManager.CanRedo();
-        }
-
         public IMouseClickHandler MouseClickHandler { get; private set; }
+
         public Canvas MyCanvas { get => PaintingCanvas; }
 
         private void OnCanvasMouseClick(object sender, MouseButtonEventArgs e)
@@ -43,24 +38,23 @@ namespace RG_PSI_PZ1
             MouseClickHandler?.Handle(clickedPosition);
         }
 
-        private void OnShapeSelectionChange(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedItem = e.AddedItems.Cast<FrameworkElement>().FirstOrDefault();
-            UpdateMouseClickHandler(selectedItem?.Name ?? "");
-        }
-
-        private void UpdateMouseClickHandler(string selectedItem = "")
-        {
-            Debug.WriteLine($"Selected Item: {selectedItem}");
-            MouseClickHandler = _mouseClickHandlerFactory.GetHandler(selectedItem);
-        }
-
         private void OnClear(object sender, RoutedEventArgs e)
         {
             if (MyCanvas.Children.Count > 0)
             {
-                MyCanvas.Children.Clear();
+                _commandManager.Execute(new ClearCanvasCommand(MyCanvas));
             }
+        }
+
+        private void OnRedo(object sender, RoutedEventArgs e)
+        {
+            _commandManager.Redo();
+        }
+
+        private void OnShapeSelectionChange(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems.Cast<FrameworkElement>().FirstOrDefault();
+            UpdateMouseClickHandler(selectedItem?.Name ?? "");
         }
 
         private void OnUndo(object sender, RoutedEventArgs e)
@@ -68,9 +62,16 @@ namespace RG_PSI_PZ1
             _commandManager.Undo();
         }
 
-        private void OnRedo(object sender, RoutedEventArgs e)
+        private void OnUndoableCommandExecuted(object sender, System.EventArgs e)
         {
-            _commandManager.Redo();
+            UndoButton.IsEnabled = _commandManager.CanUndo();
+            RedoButton.IsEnabled = _commandManager.CanRedo();
+        }
+
+        private void UpdateMouseClickHandler(string selectedItem = "")
+        {
+            Debug.WriteLine($"Selected Item: {selectedItem}");
+            MouseClickHandler = _mouseClickHandlerFactory.GetHandler(selectedItem);
         }
     }
 }
