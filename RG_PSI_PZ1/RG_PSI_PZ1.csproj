@@ -91,6 +91,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\CommandManager.cs" />
+    <Compile Include="Core\Commands\DrawUIElementCommand.cs" />
     <Compile Include="Core\DrawRectangleMouseClickHandler.cs" />
     <Compile Include="Core\Interfaces\ICommandManager.cs" />
     <Compile Include="Core\Interfaces\IMouseClickHandler.cs" />

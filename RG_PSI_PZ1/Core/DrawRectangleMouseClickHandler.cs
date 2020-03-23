@@ -22,7 +22,7 @@ namespace RG_PSI_PZ1.Core
             if (rectangle != null)
             {
                 AttachEventHandlersToRectangle(rectangle);
-                DrawRectangleToCanvas(clickPoint, rectangle);
+                _commandManager.Execute(new DrawUIElementCommand(_canvas, rectangle, clickPoint));
             }
         }
 
@@ -32,14 +32,6 @@ namespace RG_PSI_PZ1.Core
             {
                 ShowRectangleDialog(e.GetPosition(_canvas), rectangleToEdit: (Rectangle)sender);
             };
-        }
-
-        private void DrawRectangleToCanvas(Point relativePoint, Rectangle rectangle)
-        {
-            Canvas.SetLeft(rectangle, relativePoint.X);
-            Canvas.SetTop(rectangle, relativePoint.Y);
-
-            _canvas.Children.Add(rectangle);
         }
 
         private Rectangle ShowRectangleDialog(Point canvasClickPoint, Rectangle rectangleToEdit = null)

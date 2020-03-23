@@ -36,10 +36,10 @@
                     </ListBoxItem>
                 </ListBox>
                 <Separator />
-                <Button ToolTip="Undo">
+                <Button x:Name="UndoButton" ToolTip="Undo" Click="OnUndo" IsEnabled="False">
                     <materialDesign:PackIcon Kind="Undo" />
                 </Button>
-                <Button ToolTip="Redo">
+                <Button x:Name="RedoButton" ToolTip="Redo" Click="OnRedo" IsEnabled="False">
                     <materialDesign:PackIcon Kind="Redo" />
                 </Button>
                 <Separator />

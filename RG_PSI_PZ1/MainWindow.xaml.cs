@@ -21,7 +21,15 @@ namespace RG_PSI_PZ1
 
             _commandManager = new Core.CommandManager();
             _mouseClickHandlerFactory = new MouseClickHandlerFactory(MyCanvas, _commandManager);
+
+            _commandManager.CommandExecuted += OnUndoableCommandExecuted;
             UpdateMouseClickHandler();
+        }
+
+        private void OnUndoableCommandExecuted(object sender, System.EventArgs e)
+        {
+            UndoButton.IsEnabled = _commandManager.CanUndo();
+            RedoButton.IsEnabled = _commandManager.CanRedo();
         }
 
         public IMouseClickHandler MouseClickHandler { get; private set; }
@@ -49,7 +57,20 @@ namespace RG_PSI_PZ1
 
         private void OnClear(object sender, RoutedEventArgs e)
         {
-            MyCanvas.Children.Clear();
+            if (MyCanvas.Children.Count > 0)
+            {
+                MyCanvas.Children.Clear();
+            }
+        }
+
+        private void OnUndo(object sender, RoutedEventArgs e)
+        {
+            _commandManager.Undo();
+        }
+
+        private void OnRedo(object sender, RoutedEventArgs e)
+        {
+            _commandManager.Redo();
         }
     }
 }
