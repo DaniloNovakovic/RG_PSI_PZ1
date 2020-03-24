@@ -16,7 +16,8 @@ namespace RG_PSI_PZ1.Core
             _handlers = new Dictionary<string, IMouseClickHandler>
             {
                 ["rectangle"] = new DrawRectangleMouseClickHandler(canvas, commandManager),
-                ["ellipse"] = new DrawEllipseMouseClickHandler(canvas, commandManager)
+                ["ellipse"] = new DrawEllipseMouseClickHandler(canvas, commandManager),
+                ["image"] = new DrawImageMouseClickHandler(canvas, commandManager)
             };
         }
 

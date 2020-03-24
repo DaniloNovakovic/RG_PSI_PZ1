@@ -1,0 +1,38 @@
+﻿<Window x:Class="RG_PSI_PZ1.DrawImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RG_PSI_PZ1"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Draw a Image" Height="300" Width="400">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="2*" />
+            <ColumnDefinition  Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Width:" Grid.Row="0" Grid.Column="0" Margin="5" />
+        <xctk:IntegerUpDown x:Name="WidthInput" Value="200" Grid.Row="0" Grid.Column="1" TextAlignment="Right" Margin="5" />
+
+        <TextBlock Text="Height:" Grid.Row="1" Grid.Column="0" Margin="5" />
+        <xctk:IntegerUpDown x:Name="HeightInput" Value="200" Grid.Row="1" Grid.Column="1" TextAlignment="Right" Margin="5" />
+
+        <TextBlock Text="Image Path:" Grid.Row="2" Grid.Column="0" Margin="5" />
+        <TextBlock x:Name="ImagePathLabel" Text="" TextTrimming="CharacterEllipsis" Grid.Row="2" Grid.Column="1" Margin="5" />
+
+        <Button x:Name="ImagePathInputButton" Content="Choose Image" Grid.Row="3" Grid.Column="1" Click="ImagePathInputButton_Click" />
+
+        <Button x:Name="CancelButton" Content="Cancel" Grid.Row="5" Grid.Column="0" Margin="5" Click="CancelButton_Click" />
+        <Button x:Name="SubmitButton" Content="Submit" Grid.Row="5" Grid.Column="1" Margin="5" Click="SubmitButton_Click" />
+    </Grid>
+</Window>

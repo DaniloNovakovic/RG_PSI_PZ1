@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
@@ -23,7 +18,7 @@ namespace RG_PSI_PZ1.Core
 
         public void Handle(Point clickPoint)
         {
-            var ellipse = ShowRectangleDialog(clickPoint);
+            var ellipse = ShowEllipseDialog(clickPoint);
             if (ellipse != null)
             {
                 AttachEventHandlersToEllipse(ellipse);
@@ -35,11 +30,11 @@ namespace RG_PSI_PZ1.Core
         {
             ellipse.MouseLeftButtonUp += (sender, e) =>
             {
-                ShowRectangleDialog(e.GetPosition(_canvas), ellipseToEdit: (Ellipse)sender);
+                ShowEllipseDialog(e.GetPosition(_canvas), ellipseToEdit: (Ellipse)sender);
             };
         }
 
-        private Ellipse ShowRectangleDialog(Point canvasClickPoint, Ellipse ellipseToEdit = null)
+        private Ellipse ShowEllipseDialog(Point canvasClickPoint, Ellipse ellipseToEdit = null)
         {
             Debug.WriteLine("Opening DrawEllipseWindow dialog...");
 
