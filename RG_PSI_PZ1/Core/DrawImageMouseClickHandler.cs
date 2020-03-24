@@ -17,7 +17,7 @@ namespace RG_PSI_PZ1.Core
 
         public void Handle(Point clickPoint)
         {
-            var image = new Image { Height = 200, Width = 200 };
+            var image = new Image { Height = 200, Width = 200, Stretch = System.Windows.Media.Stretch.Fill };
             string imageSource = "";
 
             ShowImageDialog(clickPoint, ref imageSource, ref image);
