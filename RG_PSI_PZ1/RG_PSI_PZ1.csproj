@@ -78,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DrawEllipseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DrawRectangleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,11 +97,15 @@
     <Compile Include="Core\CommandManager.cs" />
     <Compile Include="Core\Commands\ClearCanvasCommand.cs" />
     <Compile Include="Core\Commands\DrawUIElementCommand.cs" />
+    <Compile Include="Core\DrawEllipseMouseClickHandler.cs" />
     <Compile Include="Core\DrawRectangleMouseClickHandler.cs" />
     <Compile Include="Core\Interfaces\ICommandManager.cs" />
     <Compile Include="Core\Interfaces\IMouseClickHandler.cs" />
     <Compile Include="Core\Interfaces\IMouseClickHandlerFactory.cs" />
     <Compile Include="Core\Interfaces\IUndoableCommand.cs" />
+    <Compile Include="DrawEllipseWindow.xaml.cs">
+      <DependentUpon>DrawEllipseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DrawRectangleWindow.xaml.cs">
       <DependentUpon>DrawRectangleWindow.xaml</DependentUpon>
     </Compile>
