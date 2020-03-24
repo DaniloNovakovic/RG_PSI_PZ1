@@ -24,6 +24,7 @@ namespace RG_PSI_PZ1.Core
         {
             command.Execute();
             _undoStack.Push(command);
+            _redoStack.Clear();
 
             OnCommandExecuted();
         }
@@ -31,7 +32,10 @@ namespace RG_PSI_PZ1.Core
         public void Redo()
         {
             var command = _redoStack.Pop();
-            Execute(command);
+            command.Execute();
+            _undoStack.Push(command);
+
+            OnCommandExecuted();
         }
 
         public void Undo()
