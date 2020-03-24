@@ -17,30 +17,36 @@ namespace RG_PSI_PZ1.Core
 
         public void Handle(Point clickPoint)
         {
-            var image = ShowImageDialog(clickPoint);
+            var image = new Image { Height = 200, Width = 200 };
+            string imageSource = "";
+
+            ShowImageDialog(clickPoint, ref imageSource, ref image);
+
             if (image != null)
             {
-                AttachEventHandlersToImage(image);
+                AttachEventHandlersToImage(image, imageSource);
                 _commandManager.Execute(new DrawUIElementCommand(_canvas, image, clickPoint));
             }
         }
 
-        private void AttachEventHandlersToImage(Image image)
+        private void AttachEventHandlersToImage(Image image, string imageSource)
         {
             image.MouseLeftButtonUp += (sender, e) =>
             {
-                ShowImageDialog(e.GetPosition(_canvas), imageToEdit: (Image)sender);
+                string imgSource = imageSource;
+                var imgToEdit = (Image)sender;
+                ShowImageDialog(e.GetPosition(_canvas), ref imgSource, ref imgToEdit);
             };
         }
 
-        private Image ShowImageDialog(Point canvasClickPoint, Image imageToEdit = null)
+        private void ShowImageDialog(Point canvasClickPoint, ref string imageSource, ref Image imageToEdit)
         {
             Debug.WriteLine("Opening DrawImageWindow dialog...");
 
             var absoluteClickPoint = _canvas.PointToScreen(canvasClickPoint);
             Debug.WriteLine($"AbsClickPoint: ({absoluteClickPoint.X},{absoluteClickPoint.Y})");
 
-            var window = new DrawImageWindow
+            var window = new DrawImageWindow(imageSource)
             {
                 WindowStartupLocation = WindowStartupLocation.Manual,
                 Left = absoluteClickPoint.X,
@@ -52,7 +58,11 @@ namespace RG_PSI_PZ1.Core
                 window.ImageInput = imageToEdit;
             }
 
-            return window.ShowDialog() ?? false ? window.ImageInput : null;
+            if (window.ShowDialog() ?? false)
+            {
+                imageToEdit = window.ImageInput;
+                imageSource = window.ImagePathLabel.Text;
+            }
         }
     }
 }
