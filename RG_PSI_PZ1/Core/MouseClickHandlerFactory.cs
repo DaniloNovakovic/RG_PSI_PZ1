@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RG_PSI_PZ1.Core
 {
@@ -33,7 +34,7 @@ namespace RG_PSI_PZ1.Core
 
         private class NullMouseClickHandler : IMouseClickHandler
         {
-            public void Handle(Point clickPoint)
+            public void Handle(MouseButtonEventArgs e)
             {
             }
         }

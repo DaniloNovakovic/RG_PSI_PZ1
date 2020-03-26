@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RG_PSI_PZ1.Core
 {
@@ -15,8 +16,10 @@ namespace RG_PSI_PZ1.Core
             _commandManager = commandManager;
         }
 
-        public void Handle(Point clickPoint)
+        public void Handle(MouseButtonEventArgs e)
         {
+            Point clickPoint = e.GetPosition(_canvas);
+
             var image = new Image { Height = 200, Width = 200, Stretch = System.Windows.Media.Stretch.Fill };
             string imageSource = "";
 

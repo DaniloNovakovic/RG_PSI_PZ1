@@ -32,10 +32,7 @@ namespace RG_PSI_PZ1
 
         private void OnCanvasMouseClick(object sender, MouseButtonEventArgs e)
         {
-            var clickedPosition = e.GetPosition(MyCanvas);
-
-            Debug.WriteLine($"Canvas Clicked: ({clickedPosition.X}, {clickedPosition.Y})");
-            MouseClickHandler?.Handle(clickedPosition);
+            MouseClickHandler?.Handle(e);
         }
 
         private void OnClear(object sender, RoutedEventArgs e)

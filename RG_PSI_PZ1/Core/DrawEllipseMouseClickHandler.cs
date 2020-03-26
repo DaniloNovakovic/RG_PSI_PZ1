@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Shapes;
 
 namespace RG_PSI_PZ1.Core
@@ -16,8 +17,10 @@ namespace RG_PSI_PZ1.Core
             _commandManager = commandManager;
         }
 
-        public void Handle(Point clickPoint)
+        public void Handle(MouseButtonEventArgs e)
         {
+            Point clickPoint = e.GetPosition(_canvas);
+
             var ellipse = ShowEllipseDialog(clickPoint);
             if (ellipse != null)
             {
