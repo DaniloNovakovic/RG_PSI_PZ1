@@ -33,7 +33,7 @@ Right clicking Canvas will prompt window to create selected shape (with exceptio
 
 ### Ellipse
 
-![Ellipse Demo](./doc/image-demo.gif)
+![Ellipse Demo](./doc/ellipse-demo.gif)
 
 ### Rectangle
 
