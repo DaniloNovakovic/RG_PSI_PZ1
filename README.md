@@ -23,6 +23,36 @@ Follow these steps to get your development environment set up:
   1. Build solution in Visual Studio (2017 or 2019)
   1. Start Application
 
+## Usage Guide
+
+This section will focus on how to use this application, as well as give brief explanation on what each display does.
+
+Common functionality is that left clicking created item will prompt window to edit created shape.
+
+Right clicking Canvas will prompt window to create selected shape (with exception to [polygon](#polygon))
+
+### Ellipse
+
+![Ellipse Demo](./doc/image-demo.gif)
+
+### Rectangle
+
+![Rectangle Demo](./doc/rectangle-demo.gif)
+
+### Polygon
+
+![Polygon Demo](./doc/polygon-demo.gif)
+
+Right clicking on Canvas you create logical "points" after which by left clicking you connect these points into an polygon.
+
+### Image
+
+![Image Demo](./doc/image-demo.gif)
+
+### Undo Redo Clear  
+
+![Undo Redo Clear demo](./doc/undo-redo-demo.gif)
+
 ---
 
 Copyright 2020 © [DaniloNovakovic](https://github.com/DaniloNovakovic)
