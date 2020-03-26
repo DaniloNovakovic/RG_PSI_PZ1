@@ -18,7 +18,8 @@ namespace RG_PSI_PZ1.Core
             {
                 ["rectangle"] = new DrawRectangleMouseClickHandler(canvas, commandManager),
                 ["ellipse"] = new DrawEllipseMouseClickHandler(canvas, commandManager),
-                ["image"] = new DrawImageMouseClickHandler(canvas, commandManager)
+                ["image"] = new DrawImageMouseClickHandler(canvas, commandManager),
+                ["polygon"] = new DrawPolygonMouseClickHandler(canvas, commandManager)
             };
         }
 

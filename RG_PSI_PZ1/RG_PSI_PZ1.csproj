@@ -103,6 +103,7 @@
     <Compile Include="Core\Commands\DrawUIElementCommand.cs" />
     <Compile Include="Core\DrawEllipseMouseClickHandler.cs" />
     <Compile Include="Core\DrawImageMouseClickHandler.cs" />
+    <Compile Include="Core\DrawPolygonMouseClickHandler.cs" />
     <Compile Include="Core\DrawRectangleMouseClickHandler.cs" />
     <Compile Include="Core\Interfaces\ICommandManager.cs" />
     <Compile Include="Core\Interfaces\IMouseClickHandler.cs" />

@@ -48,7 +48,7 @@
                 </Button>
             </ToolBar>
         </ToolBarTray>
-        <Canvas x:Name="PaintingCanvas" Grid.Row="1" Background="AntiqueWhite" MouseRightButtonUp="OnCanvasMouseClick">
+        <Canvas x:Name="PaintingCanvas" Grid.Row="1" Background="AntiqueWhite" MouseLeftButtonUp="OnCanvasMouseClick" MouseRightButtonUp="OnCanvasMouseClick">
         </Canvas>
     </Grid>
 </Window>

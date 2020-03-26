@@ -18,6 +18,11 @@ namespace RG_PSI_PZ1.Core
 
         public void Handle(MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Right)
+            {
+                return;
+            }
+
             Point clickPoint = e.GetPosition(_canvas);
 
             var image = new Image { Height = 200, Width = 200, Stretch = System.Windows.Media.Stretch.Fill };

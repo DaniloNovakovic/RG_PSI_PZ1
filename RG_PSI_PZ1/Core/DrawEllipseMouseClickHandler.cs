@@ -19,6 +19,11 @@ namespace RG_PSI_PZ1.Core
 
         public void Handle(MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Right)
+            {
+                return;
+            }
+
             Point clickPoint = e.GetPosition(_canvas);
 
             var ellipse = ShowEllipseDialog(clickPoint);
