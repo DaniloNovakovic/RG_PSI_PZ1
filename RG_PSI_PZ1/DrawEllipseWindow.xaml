@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Width:" Grid.Row="0" Grid.Column="0" Margin="5" />
-        <xctk:IntegerUpDown x:Name="WidthInput" Value="200" Grid.Row="0" Grid.Column="1" TextAlignment="Right" Margin="5" />
+        <xctk:IntegerUpDown x:Name="WidthInput" Value="75" Grid.Row="0" Grid.Column="1" TextAlignment="Right" Margin="5" />
 
         <TextBlock Text="Height:" Grid.Row="1" Grid.Column="0" Margin="5" />
         <xctk:IntegerUpDown x:Name="HeightInput" Value="75" Grid.Row="1" Grid.Column="1" TextAlignment="Right" Margin="5" />

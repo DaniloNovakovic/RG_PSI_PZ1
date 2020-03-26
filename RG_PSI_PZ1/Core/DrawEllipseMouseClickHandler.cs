@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -30,8 +31,15 @@ namespace RG_PSI_PZ1.Core
             if (ellipse != null)
             {
                 AttachEventHandlersToEllipse(ellipse);
-                _commandManager.Execute(new DrawUIElementCommand(_canvas, ellipse, clickPoint));
+                Point elipseCenterPoint = MovePointToCenterOfEllipse(clickPoint, ellipse);
+                _commandManager.Execute(new DrawUIElementCommand(_canvas, ellipse, elipseCenterPoint));
             }
+        }
+
+        private Point MovePointToCenterOfEllipse(Point clickPoint, Ellipse ellipse)
+        {
+            return new Point(x: clickPoint.X - (ellipse.Width / 2),
+                             y: clickPoint.Y - (ellipse.Height / 2));
         }
 
         private void AttachEventHandlersToEllipse(Ellipse ellipse)

@@ -56,7 +56,7 @@ namespace RG_PSI_PZ1
             Debug.WriteLine($"Fill Color: {FillColorInput.SelectedColor}");
             Debug.WriteLine($"Border Color: {BorderColorInput.SelectedColor}, Border Thickness: {BorderThicknessInput.Text}");
 
-            EllipseInput.Width = WidthInput?.Value ?? 200;
+            EllipseInput.Width = WidthInput?.Value ?? 75;
             EllipseInput.Height = HeightInput?.Value ?? 75;
 
             var fillColor = FillColorInput.SelectedColor ?? Color.FromRgb(0, 0, 255);
